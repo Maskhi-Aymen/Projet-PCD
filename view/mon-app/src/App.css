@@ -1,11 +1,38 @@
 .App {
   text-align: center;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-image: url(./images/background.jpg);
+min-width: 100%;
+min-height: 100%;
+background-size: cover;
+background-position: center;
+scroll-behavior: smooth;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #9D8189; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #9d818994; 
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -9,6 +9,7 @@ from django.db import models
 class Admin(models.Model):
     admin_mail = models.CharField(max_length=500,unique=True)
     admin_password = models.CharField(max_length=500)
+    
 
 class User(models.Model):
     user_mail = models.CharField(max_length=500,unique=True)
