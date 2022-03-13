@@ -8,6 +8,10 @@ background-size: cover;
 background-position: center;
 scroll-behavior: smooth;
 }
+a{
+  color: inherit;
+ display:contents;
+}
 
 .App-logo {
   height: 40vmin;

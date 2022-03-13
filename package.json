@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@mui/lab": "^5.0.0-alpha.69",
+    "@mui/material": "^5.4.2",
+    "date-fns": "^2.28.0",
+    "react-toastify": "^8.2.0"
+  }
+}

@@ -11,7 +11,7 @@ import playicon from '../o.images/Asset_3icon_PCD.png';
 import previcon from '../o.images/Asset_2gicon_PCD.png';
 import nexticon from '../o.images/Asset_2icon_PCD.png';
 
-export default function MusicCard({singer,song,url,image}) {
+export default function MusicCard({ singer, song, url, image }) {
   const theme = useTheme();
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
@@ -22,7 +22,7 @@ export default function MusicCard({singer,song,url,image}) {
   const progressBar = useRef();   // reference our progress bar
   const animationRef = useRef();  // reference the animation
 
-  
+
   const calculateTime = (secs) => {
     const minutes = Math.floor(secs / 60);
     const returnedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
@@ -68,35 +68,45 @@ export default function MusicCard({singer,song,url,image}) {
     progressBar.current.value = Number(progressBar.current.value + 30);
     changeRange();
   }
-  const c= image;
+  const c = image;
 
   return (
-    <Card sx={{ display: 'flex' ,maxWidth: 345 ,borderRadius:3, border:'2px #9D8189 solid' ,margin:'auto',backgroundImage:`url(${image})` }} >
-      <Box sx={{  flexDirection:'column' }}>
+    <Card sx={{ display: 'flex', maxWidth: 300, maxHeight: 150, borderRadius: 2, border: '1px #9D8189 solid', margin: 'auto', backgroundImage: `url(${image})` }} className="test2">
+      <Box sx={{ flexDirection: 'column' }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
           <Typography component="div" variant="h5" className='titleSong'>
             {song}
           </Typography>
-          <Typography variant="subtitle1"  component="div" className='titleSong'>
+          <Typography variant="subtitle1" component="div" className='titleSong'>
             {singer}
           </Typography>
         </CardContent>
         <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
           <IconButton aria-label="previous" onClick={backThirty}>
-            {theme.direction === 'rtl' ? <img src={previcon}  className='navbaricon' /> : <img src={previcon}  className='navbaricon' />}
+            {theme.direction === 'rtl' ? <img src={previcon} className='navbaricon' /> : <img src={previcon} className='navbaricon' />}
           </IconButton>
           <IconButton aria-label="play/pause" onClick={togglePlayPause}>
-            <audio ref={audioPlayer} s src={url} preload="metadata"/>
-            {isPlaying ?  <img src={pauseicon}  className='navbaricon' /> :  <img src={playicon}  className='navbaricon' />}
+            <audio ref={audioPlayer} s src={url} preload="metadata" />
+            {isPlaying ? <img src={pauseicon} className='navbaricon' /> : <img src={playicon} className='navbaricon' />}
           </IconButton>
           <IconButton aria-label="next" onClick={forwardThirty}>
-            {theme.direction === 'rtl' ? <img src={nexticon}  className='navbaricon' /> : <img src={nexticon}  className='navbaricon' />}
+            {theme.direction === 'rtl' ? <img src={nexticon} className='navbaricon' /> : <img src={nexticon} className='navbaricon' />}
           </IconButton>
         </Box>
+        {/* current time */}
+        <div>{calculateTime(currentTime)}</div>
+
+        {/* progress bar */}
+        <div>
+          <input type="range" defaultValue="0" ref={progressBar} onChange={changeRange} />
+        </div>
+
+        {/* duration */}
+        <div >{(duration && !isNaN(duration)) && calculateTime(duration)}</div>
       </Box>
-  <CardMedia
+      <CardMedia
         component="img"
-        sx={{ width: 100,width:150 }}
+        sx={{ width: 100, width: 150 }}
         image={image}
         alt="Live from space album cover"
       />

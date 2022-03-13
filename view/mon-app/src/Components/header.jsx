@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
-
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import  './css/Main.css'
 
-class Header extends Component {
-    render() {
+export default function Header({text}) {
+    
         return (
-            <div id="home">   
-                <h1 className="header-h1">Profile Page</h1>
+            <div id="home">  
+                <h1 className="header-h1">{text}</h1>
             </div>
         )
-    }
+    
 }
-
-export default Header

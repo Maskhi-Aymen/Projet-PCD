@@ -143,6 +143,10 @@ input[type="text"], input[type="password"], textarea, select {
     width: 30px !important;
     height: 30px !important;
 }
+.navbaricon:hover{
+    box-shadow: 1px 1px 1px #FFCAD4;
+    transform: translateY(1px);
+}
 
 
 @media (max-width:900px) {
@@ -164,6 +168,10 @@ input[type="text"], input[type="password"], textarea, select {
         margin-left: auto;
         margin-right: auto;
     
+    }
+    .navbaricon{
+        width: 24px !important;
+        height: 24px !important;
     }
     .photo-Mod
     {

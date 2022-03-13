@@ -15,7 +15,18 @@
 }
 .containerMusic{
 	display:contents;
-
+	grid-gap: 1rem;
+	grid-template-columns: repeat(
+		auto-fill,
+		minmax(250px, 1fr)
+	);
+    align-items: center;
+	justify-content: space-between;
+    margin-right: auto;
+	margin-left: auto;
+	padding-right: 15px;
+	padding-left: 15px;
+	min-height: 100vh;
 
 	
 }
@@ -23,5 +34,41 @@
 .titleSong{
     font-family:Georgia, 'Times New Roman', Times, serif;
 	color: #FFCAD4;
-	font-size: 342px;
+}
+.test2:hover{
+	box-shadow: 0px 15px 20px #FFCAD4;
+	transform: translateY(-7px);
+}
+.navbotton{
+	width: 80%;
+	display:flex;
+margin: auto;
+
+margin-left: 49px;
+justify-content: center;
+	
+}
+.containerPublication{
+max-width: 600px;
+margin: auto;
+justify-content: space-between;
+margin-top: 10px;
+margin-bottom: 10px;
+
+	
+}
+@media (max-width:900px) {
+	.navbotton{
+		width: 6%;
+		display: flex;
+		margin-left: 148px;
+		justify-content: center;
+		float: right;
+	}
+	.containerPublication{
+		max-width: 300px;
+		
+		
+			
+		}
 }

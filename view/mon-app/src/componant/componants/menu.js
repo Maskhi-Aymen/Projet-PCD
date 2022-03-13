@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from "react-router-dom";
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import EmailSharpIcon from '@mui/icons-material/EmailSharp';
@@ -8,12 +9,14 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import SegmentIcon from '@mui/icons-material/Segment';
-import MenuIcon from '@mui/icons-material/Menu';
+import HomeIcon from '@mui/icons-material/Home';
 import IconButton from '@mui/material/IconButton';
-import NoteAltIcon from '@mui/icons-material/NoteAlt';
 import PolicyIcon from '@mui/icons-material/Policy';
-import MusicNoteIcon from '@mui/icons-material/MusicNote';
-
+import AccountCircleSharpIcon from '@mui/icons-material/AccountCircleSharp';
+import ManageAccountsSharpIcon from '@mui/icons-material/ManageAccountsSharp';
+import LogoutSharpIcon from '@mui/icons-material/LogoutSharp';
+import menuicon from '../o.images/Asset_1icon_PCD.png';
+import FlagIcon from '@mui/icons-material/Flag';
 export default function SwipeableTemporaryDrawer() {
   const [state, setState] = React.useState({
     top: false,
@@ -42,27 +45,48 @@ var anchor='left';
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-          <ListItem button key='My Notes'>
+      <Link to={"/user/home"}>
+          <ListItem button key='Home'>
             <ListItemIcon>
-            <NoteAltIcon />
+            <HomeIcon />
             </ListItemIcon>
-            <ListItemText primary='My Notes' />
+            <ListItemText primary='Home' />
           </ListItem>
-          <ListItem button key="Songs" >
+          </Link>
+      </List>
+      <Divider />
+      <List>
+      <Link to={"/user/Profile"}>
+          <ListItem button key='Profile'>
             <ListItemIcon>
-              <MusicNoteIcon/>
+            <AccountCircleSharpIcon />
             </ListItemIcon>
-            <ListItemText primary="Songs" />
+            <ListItemText primary='Profile' />
+          </ListItem>
+          </Link>
+          <ListItem button key="My Account" >
+            <ListItemIcon>
+              <ManageAccountsSharpIcon/>
+            </ListItemIcon>
+            <ListItemText primary="My Account" />
+          </ListItem>
+          <ListItem button key="My Goals" >
+            <ListItemIcon>
+              <FlagIcon/>
+            </ListItemIcon>
+            <ListItemText primary="My Goals" />
           </ListItem>
       </List>
       <Divider />
       <List>
+      <Link to={"/user/contact"}>
            <ListItem button key="Contact Us" >
             <ListItemIcon>
               <EmailSharpIcon/>
             </ListItemIcon>
             <ListItemText primary="Contact Us" />
           </ListItem>
+          </Link>
           <ListItem button key="General Conditions" >
             <ListItemIcon>
               <SegmentIcon/>
@@ -76,6 +100,15 @@ var anchor='left';
             <ListItemText primary="Privacy Policy" />
           </ListItem>
 
+      </List>
+      <Divider />
+      <List>
+      <ListItem button key="Log Out" >
+            <ListItemIcon>
+              <LogoutSharpIcon sx={{color:'#F4ACB7'}}/>
+            </ListItemIcon>
+            <ListItemText primary="Log Out" sx={{color:'#F4ACB7'}} />
+          </ListItem>
       </List>
     </Box>
   );
@@ -91,7 +124,7 @@ var anchor='left';
             aria-label="open drawer"
             sx={{ mr: 1 }} onClick={toggleDrawer(anchor, true)}
           >
-            <MenuIcon />
+            <img src={menuicon} className='navbaricon' />
           </IconButton>
           <SwipeableDrawer
             anchor={anchor}

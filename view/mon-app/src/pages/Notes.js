@@ -46,7 +46,7 @@ export default function Notes () {
 	};
 
 	return (
-		
+		<div className='yellocard'>
 		<div className={`${darkMode && 'dark-mode'}`}>
 			<div className='containerNote'>
 				<Header handleToggleDarkMode={setDarkMode} />
@@ -60,6 +60,7 @@ export default function Notes () {
 				/>
 			</div>
 		
+		</div>
 		</div>
 	);
 };

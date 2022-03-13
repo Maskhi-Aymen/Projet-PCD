@@ -6,8 +6,9 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import IconButton from '@mui/material/IconButton';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import notificationicon from '../o.images/Asset_7icon_PCD.png';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
-export default function PopoverPopupState() {
+export default function PublicationOption() {
   return (
     <PopupState variant="popover" popupId="demo-popup-popover">
       {(popupState) => (
@@ -18,9 +19,7 @@ export default function PopoverPopupState() {
               aria-label="show 17 new notifications"
               color="inherit"
             >
-              <Badge badgeContent={13} color="error">
-              <img src={notificationicon}  className='navbaricon' /> 
-              </Badge>
+              <MoreVertIcon /> 
             </IconButton>
           </IconButton>
           <Popover
