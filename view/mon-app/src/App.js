@@ -1,30 +1,32 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignInSide from './pages/SignInSide';
-import PrimarySearchAppBar from './componant/navbar/navbar';
-import SongsPage from './pages/MySongs'
+import Navbar from './componant/navbar/navbar';
 import Footer from './componant/footer/footer';
 import Notes from './pages/Notes.js'
-import Welcome from './pages/welcome';
+import Meditate from './pages/meditate';
 import MusicList from './componant/player/menulist';
-import Content from './componant/content/content';
+import Content from './pages/content';
 import Profile from './pages/Profile';
-import Account from './pages/Account';
-import Registration from './componant/registration/Registration';
-import Part2 from './Playliste/playliste';
-import Media from './componant/media/media';
+import Registration from './pages/Registration';
+import PlayListe from './componant/Playliste/playliste';
+import Media from './pages/Media';
 import Routing from './routing';
-import SectionTitle from './contactUs/Contact.js';
+import Contact from './pages/Contact.js';
 
-import TodoList from './planDay/ToDoList';
 
 
 
 function App() {
   return (
     <div className="App"> 
-    <Routing/>
-   <Footer/>
+    <Router>
+      <Switch>
+        <Route exact path='/' component={() => <SignInSide />} />
+        <Route exact path='/user' component={() => <Routing />} />
+
+      </Switch>
+      </Router>
     </div>
   );
 }
@@ -45,4 +47,9 @@ export default App;
           <Route path="/user/profile">
             <Profile/>
           </Route>
+
+
+
+
+
 */

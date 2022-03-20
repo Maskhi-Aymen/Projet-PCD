@@ -1,26 +1,24 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignInSide from './pages/SignInSide';
-import PrimarySearchAppBar from './componant/navbar/navbar';
-import SongsPage from './pages/MySongs'
+import Navbar from './componant/navbar/navbar';
 import Footer from './componant/footer/footer';
 import Notes from './pages/Notes.js'
-import Welcome from './pages/welcome';
+import Meditate from './pages/meditate';
 import MusicList from './componant/player/menulist';
-import Content from './componant/content/content';
+import Content from './pages/content';
 import Profile from './pages/Profile';
-import Account from './pages/Account';
-import Registration from './componant/registration/Registration';
-import Part2 from './Playliste/playliste';
-import Media from './componant/media/media';
-import Contact from './contactUs/Contact.js';
-import TodoList from "./planDay/ToDoList";
+import Registration from './pages/Registration';
+import PlayListe from './componant/Playliste/playliste';
+import Media from './pages/Media';
+import Contact from './pages/Contact.js';
+import TodoList from "./pages/ToDoList";
 
 
 function Routing() {
   return (
 <div>
 <Router>
-      <PrimarySearchAppBar />
+      <Navbar />
       <div className="container">
         <Switch>
           <Route exact path="/user/home">

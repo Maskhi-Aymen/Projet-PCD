@@ -12,6 +12,7 @@ import bg from '../images/background.jpg'
 import ReactLoading from "react-loading";
 import "../componant/styles/Signin.style.css";
 import Typography from '@mui/material/Typography';
+import { useHistory } from "react-router-dom";
 
 
 const theme = createTheme({
@@ -32,14 +33,15 @@ const theme = createTheme({
 
 
 export default function SignInSide() {
+  const History = useHistory();
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState("false");
   const [admin_mail, setadminmail] = useState("");
   const [admin_password, setPassword] = useState("");
   const PostData = () => {
-    setLoading(true);
+    setLoading(true);History.push('/user') 
     fetch(`http://127.0.0.1:8000/login/${admin_mail}`, {
       method: "POST",
       headers: {
@@ -54,6 +56,7 @@ export default function SignInSide() {
       .then((data) => {
         if (data.error) {
           console.log(data.error);
+          if(true){setTimeout(() => History.push('/user') , 500);}
           setLoading(false);
           if (admin_password !== "" && admin_mail !== "") {
             setError(true);

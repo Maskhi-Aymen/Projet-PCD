@@ -1,0 +1,46 @@
+import * as React from 'react';
+import WelcomePlan from '../componant/componants/MeditateCarde';
+import '../componant/styles/welcomePlan.css';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+const theme = createTheme({
+  status: {
+    danger: '#fffff',
+  },
+  palette: {
+    primary: {
+      main: '#9D8189',
+      darker: '#053e85',
+    },
+    neutral: {
+      main: '#F4ACB7',
+      contrastText: '#f4acb7d3',
+    },
+  },
+});
+export default function Meditate() {
+  return (
+  <ThemeProvider theme={theme}>
+  <div className='containerPlan'>
+      {datau.filter((val) => {
+    return val.title.toLowerCase();
+}).map((val, key) => {
+    return (<div key='val.id' >
+        
+     <WelcomePlan title={val.title} intro={val.intro} img={val.image}  />
+    </div>)
+})}
+    </div></ThemeProvider>
+  );
+}
+const datau= [
+    { id: 1, title:"reduce dra chnya",intro:"bla bla", image: "https://blog.trello.com/hubfs/Mindfulness-final.png" ,  },
+    { id: 2, title:"reduce ",intro:"bla ", image: "https://www.medisite.fr/files/images/diaporama/4/8/4/5588484/vignette-focus_0.jpg" ,  },
+    { id: 3, title:"dra chnya",intro:"bla bla", image: "https://www.wikihow.com/images_en/thumb/4/4e/Deal-With-Exam-Stress-Step-22-Version-2.jpg/v4-460px-Deal-With-Exam-Stress-Step-22-Version-2.jpg.webp" ,  },
+    { id: 12, title:"reduce dra chnya",intro:"bla bla", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYoYfFzSBXK2LJmidGa6TsqwMxuG-YBn5x9Q&usqp=CAU" ,  },
+    { id: 22, title:"reduce ",intro:"bla ", image: "data:image/jpeg;base64,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" ,  },
+    { id: 32, title:"dra chnya",intro:"bla bla", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4wUCdSOFbTU8VWsELTEIsTAwXu4cYkFh_0A&usqp=CAU" ,  },
+    { id: 11, title:"reduce dra chnya",intro:"bla bla", image: "https://www.wikihow.com/images_en/thumb/e/ef/Relieve-Stress-by-Drawing-Step-8-Version-2.jpg/v4-460px-Relieve-Stress-by-Drawing-Step-8-Version-2.jpg.webp" ,  },
+    { id: 21, title:"reduce ",intro:"bla ", image: "https://www.wikihow.com/images_en/thumb/a/a1/Deal-With-School-Stress-Step-6.jpg/v4-460px-Deal-With-School-Stress-Step-6.jpg.webp" ,  },
+    { id: 19, title:"reduce dra chnya",intro:"bla bla", image: "https://www.wikihow.com/images_en/thumb/c/ce/Avoid-Stress-Step-2.jpg/v4-460px-Avoid-Stress-Step-2.jpg.webp" ,  },
+    { id: 29, title:"reduce ",intro:"bla ", image: "https://www.wikihow.com/images_en/thumb/0/0f/Avoid-Stress-Step-5.jpg/v4-460px-Avoid-Stress-Step-5.jpg.webp" ,  },
+  ];

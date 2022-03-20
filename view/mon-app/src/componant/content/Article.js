@@ -16,11 +16,19 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
-import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied';
-import MoodBadIcon from '@mui/icons-material/MoodBad';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import Rating from '@mui/material/Rating';
 import MusicCard from '../player/cardplayer';
 import PublicationOption from './PublicationOption';
 
+const StyledRating = styled(Rating)({
+  '& .MuiRating-iconFilled': {
+      color: '#ff6d75',
+  },
+  '& .MuiRating-iconHover': {
+      color: '#ff3d47',
+  },
+});
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
 }
@@ -36,7 +44,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   }),
 }));
 
-export default function Article({type,auteur,url,image,datepub,avatar,description,moreinfo,note}) {
+export default function Article({ type, auteur, url, image, datepub, avatar, description, moreinfo, note }) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -44,7 +52,7 @@ export default function Article({type,auteur,url,image,datepub,avatar,descriptio
   };
 
   return (
-    <Card className='containerPublication' sx={{borderRadius:'29px' }}>
+    <Card className='containerPublication' sx={{ borderRadius: '29px' }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -53,34 +61,30 @@ export default function Article({type,auteur,url,image,datepub,avatar,descriptio
         }
         action={
           <IconButton aria-label="settings">
-            <PublicationOption/>
+            <PublicationOption />
           </IconButton>
         }
         title={auteur}
         subheader={datepub}
       />
-      {(type=="vedio")? <iframe width="300" height="200"src={url}></iframe>: <></>}
-      {(type =="image")?  <CardMedia component="img"height="400" width="300" image={url}alt={type}/> : <></> }
-      {(type=="text")? <Typography variant="body2" color="text.secondary">{moreinfo}</Typography>:<></> }
-      {(type=="audio")? <MusicCard  url={url} song="Song" singer="unknown" image={image} />:<></>}
+      {(type == "vedio") ? <iframe width="300" height="200" src={url}></iframe> : <></>}
+      {(type == "image") ? <CardMedia component="img" height="400" width="300" image={url} alt={type} /> : <></>}
+      {(type == "text") ? <Typography variant="body2" color="text.secondary">{moreinfo}</Typography> : <></>}
+      {(type == "audio") ? <MusicCard url={url} song="Song" singer="unknown" image={image} /> : <></>}
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-       {description}
+          {description}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <InsertEmoticonIcon sx={{color:'pink' ,boxShadow:' 0px 1px 0px pink',transform:'translateY(2px)'}} />
-        </IconButton>
-        <IconButton aria-label="add to favorites">
-          <SentimentSatisfiedAltIcon sx={{color:'orange' ,boxShadow:' 0px 1px 0px orange',transform:'translateY(2px)'}}/>
-        </IconButton>
-        <IconButton aria-label="add to favorites">
-          <SentimentDissatisfiedIcon sx={{color:'yellow' ,boxShadow:' 0px 1px 0px yellow',transform:'translateY(2px)'}} />
-        </IconButton>
-        <IconButton aria-label="share">
-          <MoodBadIcon sx={{color:'red' ,boxShadow:' 0px 1px 0px red',transform:'translateY(2px)'}} />
-        </IconButton>
+        <StyledRating
+          name="customized-color"
+          defaultValue="2"
+          getLabelText={(value: number) => `${value} Heart${value !== 1 ? 's' : ''}`}
+          precision={0.5}
+          icon={<FavoriteIcon fontSize="inherit" />}
+          emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+        />{(moreinfo === "") ?   <></>:
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -88,15 +92,16 @@ export default function Article({type,auteur,url,image,datepub,avatar,descriptio
           aria-label="show more"
         >
           <ExpandMoreIcon />
-        </ExpandMore>
+        </ExpandMore>}
       </CardActions>
+      {(moreinfo === "") ?   <></>:
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>
             {moreinfo}
           </Typography>
         </CardContent>
-      </Collapse>
+      </Collapse>}
     </Card>
   );
 }

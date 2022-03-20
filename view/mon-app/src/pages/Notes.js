@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
-import NotesList from '../componant/componants/componentsNote/NotesList';
-import Search from '../componant/componants/componentsNote/Search';
-import Header from '../componant/componants/componentsNote/Header';
+import NotesList from '../componant/componentsNote/NotesList';
+import Search from '../componant/componentsNote/Search';
+import Header from '../componant/componentsNote/Header';
 import '../componant/styles/NoteStyle.css';
 
 export default function Notes () {

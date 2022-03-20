@@ -1,9 +1,9 @@
 import React from 'react';
 // import logo from './logo.svg';
 
-import Header from '../Components/header'
-import Banner from '../Components/Banner'
-import LabTabs from '../Components/LabTab';
+import Header from '../componant/profile_componants/header.jsx'
+import Banner from '../componant/profile_componants/Banner.jsx'
+import LabTabs from '../componant/profile_componants/LabTab';
 
 
 

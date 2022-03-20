@@ -1,8 +1,8 @@
 import React from 'react';
 // import logo from './logo.svg';
 
-import Header from '../Components/header'
-import Banner from '../Components/Banner'
+import Header from '../Componant/profile_componants/ '
+import Banner from '../Componants/Banner'
 
 
 
