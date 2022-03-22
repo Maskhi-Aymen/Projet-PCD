@@ -13,6 +13,7 @@ import ReactLoading from "react-loading";
 import "../componant/styles/Signin.style.css";
 import Typography from '@mui/material/Typography';
 import { useHistory } from "react-router-dom";
+import logo from "../images/logo.png"
 
 
 const theme = createTheme({
@@ -89,8 +90,8 @@ export default function SignInSide() {
         <Grid
           item
           xs={false}
-          sm={6}
-          md={12}
+          sm={12}
+          md={11.5}
           sx={{
             backgroundImage: `url(${bg})`,
             backgroundRepeat: 'no-repeat',
@@ -99,27 +100,25 @@ export default function SignInSide() {
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
-        >
-        <Grid item xs={12} sm={12} md={9} component={Paper} elevation={9} square  sx={{float: 'right',opacity:'0.7',
+        ><img src={logo} className="login_logo" ></img>
+        <Grid item xs={12} sm={10} md={10} component={Paper} elevation={12} square  sx={{float: 'right',opacity:'0.7',
         backgroundColor: 'primary.main',
       }}>
-          <Box
-          mr={4}
-
+          <Box className="login_container"
             sx={{
-              my: 14,
-              mx: 7,
+              my: 14.5,
+              mx: 7
             }}
-          ><h1>Welcome Back !</h1>
-
-
+          >
+            <h1>WELCOME BACK !</h1>
+            
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ opacity:'3' }} >
               <TextField
                 margin="normal"
                 required
                 fullWidth
                 id="email"
-                label="Username"
+                label="Email"
                 name="email"
                 autoComplete="email"
                 variant="outlined"
@@ -164,31 +163,18 @@ export default function SignInSide() {
             <Link href="#" variant="body2" sx={{color:'#9d8189dc'}} >
                     Forgot password?
                   </Link><br/>
-            <button 
+            
+              <Grid container>
+               <button 
               className="waves-effect503"
               type="submit"
               name="actio3n"
+              onClick={() => History.push('/registre') }
               style={{
                 opacity: "100% !important", 
                 backgroundColor: loading ? "#ffff":"#ffff"  ,
               }}
             >Create an Account</button>
-              <Grid container>
-                <Grid           xs={false}
-                 sm={9}
-                 md={12}>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
-                <Grid 
-                 xs={false}
-                 sm={9}
-                 md={12}>
-                  <Link href="#" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
-                </Grid>
               </Grid>
               
             </Box>

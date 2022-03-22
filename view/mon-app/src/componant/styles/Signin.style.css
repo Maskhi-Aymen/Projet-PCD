@@ -13,6 +13,12 @@
     opacity: 100%;
     height: 560px;
 }
+.login_logo{
+    height:300px; 
+    width:500px;
+    margin-top: 10%;
+    text-shadow: #ffff 4px;
+}
 .input-input-Mod1
 {
     margin-left: 20px;
@@ -150,6 +156,17 @@ input[type="text"], input[type="password"], textarea, select {
 
 
 @media (max-width:900px) {
+    .login_logo{
+        height:150px; 
+        width:200px;
+        margin-top: 10%;
+        text-shadow: #ffff 4px;
+    }
+    .login_container{
+        width: 80%;
+        height: 100%;
+
+    }
     .second-div
     {
         display: inline;
@@ -191,8 +208,16 @@ input[type="text"], input[type="password"], textarea, select {
     }
     .waves-effect505
     {
-        margin : auto auto ;
-        width: 150px;
+
+        max-width: 300px;
+        border-radius: 10%;
+        height: 30px;
+        margin-top: 30px ;
+    }
+    .waves-effect503
+    {
+
+        max-width: 300px;
         border-radius: 10%;
         height: 30px;
         margin-top: 30px ;

@@ -1,43 +1,44 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../styles/profile.css';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import IconButton from '@mui/material/IconButton';
+import { useEffect,useState } from 'react';
+import Changephoto from './changephoto';
+import axios from 'axios';
 
-export class PhotoProfile extends Component {
-  state={
-    profileImg:'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
-  }
-  imageHandler = (e) => {
-    const reader = new FileReader();
-    reader.onload = () =>{
-      if(reader.readyState === 2){
-        this.setState({profileImg: reader.result})
-      }
-    }
-    reader.readAsDataURL(e.target.files[0])
-  };
-	render() {
-    const { profileImg} = this.state
-		return (
-			<div className="PagePhotoProfile">
-				<div className="ContainerPhotoProfile">
-					<h1 className="headingPhoto">Add your Image</h1>
-					<div className="img-holderPhoto">
-						<img src={profileImg} alt="" id="img" className="imgPhotoProfile" />
-					</div>
-					<input type="file" accept="image/*" name="image-upload" id="input" onChange={this.imageHandler} />
-					<div className="label">
-          <label className="image-upload" htmlFor="input">
-              
+export default function PhotoProfile() {
+	const [datas,setdatas]=useState([]);
+    const [isLoaded,setIsLoaded]=useState(false);
 
-						<PhotoCameraIcon/>
-						
-					</label>
-          </div>
+    useEffect(async ()=>{
+		if(!isLoaded){
+		   console.log("loaded")
+		   const { data } =  await axios.patch(`http://localhost:8000/user/11`);
+			setdatas(data)
+		 
+		}
+    })
+
+
+	const imageHandler = (e) => {
+		const reader = new FileReader();
+		reader.onload = () => {
+			if (reader.readyState === 2) {
+				this.setState({ profileImg: reader.result })
+			}
+		}
+		reader.readAsDataURL(e.target.files[0])
+	}
+	return (
+		<div className="PagePhotoProfile">
+			<div className="ContainerPhotoProfile">
+				<div >
+					
+					<Changephoto  avatar={datas["user_avatar"]}/>
 				</div>
 			</div>
-		);
-	}
+		</div>
+	);
+
 }
 
-export default PhotoProfile;

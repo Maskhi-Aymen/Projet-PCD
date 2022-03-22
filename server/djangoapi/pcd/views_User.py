@@ -101,10 +101,8 @@ def UserActivityApi(request,id=0):
 
 @csrf_exempt
 def SaveFileApi(request,id=0): 
-    image='image'
-    file = request.FILES[image]
+    file = request.FILES['image'] 
     file_name=default_storage.save(file.name,file) 
     return JsonResponse(file_name,safe=False)
 
 
-#

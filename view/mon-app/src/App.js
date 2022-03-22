@@ -23,6 +23,7 @@ function App() {
     <Router>
       <Switch>
         <Route exact path='/' component={() => <SignInSide />} />
+        <Route exact path='/registre' component={() => <Registration />} />
         <Route exact path='/user' component={() => <Routing />} />
 
       </Switch>

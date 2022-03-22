@@ -21,9 +21,9 @@ class User(models.Model):
     user_Lastname=models.CharField(max_length=50)
     user_date_birth=models.DateField()
     user_dateOfJoin=models.DateField(auto_now=True)
-    user_avatar=models.ImageField(blank=True,default='')
-    user_type=models.CharField(max_length=40)
-    user_objectifs=models.CharField(max_length=500)
+    user_avatar=models.TextField(max_length=10000,default='')
+    user_type=models.CharField(max_length=40,blank=True)
+    user_objectifs=models.CharField(max_length=500,blank=True)
     admin=models.BooleanField(default=False) 
 
 class Notes (models.Model):
@@ -37,9 +37,9 @@ class Publication(models.Model):
     pub_id=models.BigAutoField(primary_key=True)
     pub_type=models.CharField(max_length=6,default="text")
     pub_date=models.DateField(auto_now=True)
-    pub_title=models.CharField(max_length=100)
-    pub_description=models.TextField(max_length=500)
-    pub_url=models.URLField(max_length=500)
+    pub_title=models.CharField(max_length=100,blank=True)
+    pub_description=models.TextField(max_length=500,blank=True)
+    pub_url=models.URLField(max_length=500,blank=True)
     pub_author=models.ForeignKey(User,on_delete=models.CASCADE,related_name='pub_author')
     pub_reactions=models.ManyToManyField(User,related_name='pub_reactions',default=[],blank=True)
     suggestion=models.BooleanField(default=True)
@@ -47,7 +47,7 @@ class Publication(models.Model):
 class Meditate(models.Model):
     med_id=models.SmallAutoField(primary_key=True)
     med_name=models.CharField(max_length=50,unique=True)
-    med_description=models.CharField(max_length=50,unique=True)
+    med_description=models.CharField(max_length=100)
     med_imgurl=models.URLField()
     med_songurl=models.URLField()
 
@@ -56,7 +56,7 @@ class Song(models.Model):
     song_id=models.BigAutoField(primary_key=True)
     song_url=models.URLField()
     song_singer=models.CharField(max_length=50)
-    song_type=models.CharField(max_length=1,default="sleep")
+    song_type=models.CharField(max_length=50,default="sleep")
 
 class PlayList(models.Model):
     pl_id=models.AutoField(primary_key=True)
@@ -72,7 +72,7 @@ class Favorite(models.Model):
 class Activity(models.Model):
     activity_id  = models.BigAutoField(primary_key=True)
     activity_name = models.CharField(max_length=100,unique=True)
-    activity_type = models.CharField(max_length=100,unique=True)
+    activity_type = models.CharField(max_length=100)
     activity_date = models.DateField()
     activity_time = models.DateTimeField()
     activity_duration = models.DurationField()
@@ -80,7 +80,7 @@ class Activity(models.Model):
 class Plan(models.Model):
     plan_id=models.BigAutoField(primary_key=True)
     plan_name =models.CharField(max_length=100,unique=True)
-    plan_type =models.CharField(max_length=500,unique=True)
+    plan_type =models.CharField(max_length=500)
     plan_activity=models.ManyToManyField(Activity,related_name='plan_activity',default=[])
 
 class Message(models.Model):

@@ -19,4 +19,3 @@ def login(request,id):
             return JsonResponse({'error':'true','admin':'false'})
     else:
          return JsonResponse({'error':'false'})
-

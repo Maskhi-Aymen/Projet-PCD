@@ -21,7 +21,8 @@ def UserApi(request,id=0):
         if user_serializer.is_valid():
             user_serializer.save()
             return JsonResponse("added succefully",safe=False)
-        return JsonResponse("Failed to add",safe=False)
+        
+        return JsonResponse(user_serializer.errors,safe=False)
     elif request.method=='PUT':
         user_data=JSONParser().parse(request)
         user=User.objects.get(user_id = user_data['user_id'] )
@@ -29,6 +30,7 @@ def UserApi(request,id=0):
         if user_serializer.is_valid():
             user_serializer.save()
             return JsonResponse("Update Successfully",safe=False)
+        print(user_serializer.errors)
         return JsonResponse("Failed to update")
     elif request.method=='DELETE':
         user=User.objects.get(user_id = id)
@@ -36,15 +38,15 @@ def UserApi(request,id=0):
         return JsonResponse("Deleted Successfully",safe=False)
     elif request.method=='PATCH':
         user=User.objects.get(user_id = id)
-        user_serializer=UserSerializer(user)
+        user_serializer=UserSerializer(user) 
         return JsonResponse(user_serializer.data,safe=False)
         
 @csrf_exempt
 def PublicationApi(request,id=0):
     if request.method=='GET':
-        pub = Publication.objects.all()
+        pub = Publication.objects.all() 
         pub_serializer=PublicationSerializer(pub,many=True)
-        return JsonResponse(pub_serializer.data,safe=False)
+        return JsonResponse(pub_serializer.data,safe=False) 
     elif request.method=='POST':
         pub_data=JSONParser().parse(request)
         pub_serializer=PublicationSerializer(data=pub_data)
@@ -61,7 +63,7 @@ def PublicationApi(request,id=0):
             return JsonResponse("Update Successfully",safe=False)
         return JsonResponse("Failed to update")
     elif request.method=='DELETE':
-        pub=Publication.objects.get(pub_mail=id)
+        pub=Publication.objects.get(pub_id=id)
         pub.delete()
         return JsonResponse("Deleted Successfully",safe=False)
     elif request.method=='PATCH':
